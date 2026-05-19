@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-deep:#ffffff;
-    --bg-card:#f5f7ff;
-    --bg-elevated:#e8ecff;
+    --bg-deep:#eef2ff;
+    --bg-card:#e0e8ff;
+    --bg-elevated:#d0dbff;
     --blue-core:#2E5CFF;
     --blue-bright:#2E5CFF;
     --blue-glow:#5578ff;
@@ -30,9 +30,9 @@
   body{background:var(--bg-deep);color:var(--text-primary);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
   body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.3}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(220,230,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
   .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.15em;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:.7rem}
-  .pm-mark{background:var(--blue-core);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1rem;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;letter-spacing:0;flex-shrink:0}
+  .pm-mark{height:28px;width:auto;display:block;flex-shrink:0}
   .nav-logo span{color:var(--blue-bright)}
   .nav-links{display:flex;gap:2rem;list-style:none}
   .nav-links a{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color .2s}
@@ -135,6 +135,10 @@
   footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
   footer p{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--text-muted);letter-spacing:.1em}
 
+  /* Sound toggle button */
+  .sound-btn{position:fixed;bottom:24px;right:24px;z-index:200;background:var(--blue-core);color:#fff;border:none;border-radius:50px;padding:.6rem 1.2rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.08em;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 20px rgba(46,92,255,.4);transition:background .2s,transform .15s}
+  .sound-btn:hover{background:var(--blue-glow);transform:translateY(-2px)}
+
   @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-deep)}::-webkit-scrollbar-thumb{background:var(--blue-muted);border-radius:2px}
 
@@ -150,10 +154,11 @@
 </head>
 <body>
 
+<button class="sound-btn" id="soundBtn" onclick="toggleSound()">🔇 Tap for Sound</button>
+
 <nav>
   <a href="#" class="nav-logo">
-    <div class="pm-mark">P</div>
-    Louis <span>Firmstone</span>
+    <img src="polymarket-logo.png" class="pm-mark" alt="Polymarket">
   </a>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
@@ -187,7 +192,7 @@
   <div class="why-box">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;">
       <div class="why-title" style="margin-bottom:0;">↗ Why Polymarket</div>
-      <div style="background:var(--blue-core);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;padding:.4rem 1rem;border-radius:6px;">POLYMARKET</div>
+      <img src="polymarket-logo.png" alt="Polymarket" style="height:44px;width:auto;object-fit:contain;border-radius:8px;">
     </div>
     <p>Polymarket is the closest thing the internet has to <strong>real-time truth</strong> — collective intelligence priced in public. That's not a betting platform. That's a content strategy. I've spent years turning high-stakes sports and prediction market moments into content that spreads — <strong>building a daily publishing system around breaking Polymarket sports stories before anyone else could own the narrative.</strong> I understand exactly how sports fans engage with probability, stakes, and live outcomes. <strong>I'm not here to run campaigns. I'm here to originate the ideas that make Polymarket culturally unavoidable.</strong></p>
   </div>
@@ -422,7 +427,7 @@
     <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2rem;">
       <img src="headshot.png" alt="Louis Firmstone" style="width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--blue-bright);">
       <div style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--text-muted);letter-spacing:.1em;">APPLYING TO</div>
-      <div style="background:var(--blue-core);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.1em;padding:.4rem 1.2rem;border-radius:8px;">POLYMARKET</div>
+      <img src="polymarket-logo.png" alt="Polymarket" style="height:44px;width:auto;object-fit:contain;border-radius:8px;">
     </div>
     <div class="sec-label" style="justify-content:center;">06 Let's Talk</div>
     <h2 class="sec-title" style="text-align:center;">Ready to Build<br>Something for Polymarket</h2>
@@ -437,9 +442,20 @@
 </div>
 
 <footer>
-  <p>© 2026 Louis Firmstone · Creative Strategist</p>
-  <p style="color:var(--blue-bright);font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;">Built for Polymarket · louisfirmstone@gmail.com</p>
+  <img src="polymarket-logo.png" alt="Polymarket" style="height:28px;width:auto;opacity:.7;">
+  <p>© 2026 Louis Firmstone · Creative Strategist · louisfirmstone@gmail.com</p>
 </footer>
+
+<script>
+  let soundOn = false;
+  const autoVids = document.querySelectorAll('video[autoplay]');
+  function toggleSound() {
+    soundOn = !soundOn;
+    autoVids.forEach(v => { v.muted = !soundOn; });
+    const btn = document.getElementById('soundBtn');
+    btn.textContent = soundOn ? '🔊 Sound On' : '🔇 Tap for Sound';
+  }
+</script>
 
 </body>
 </html>
